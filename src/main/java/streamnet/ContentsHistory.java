@@ -16,6 +16,18 @@ public class ContentsHistory {
     private String status;
     private Long contentsId;
 
+    @PrePersist
+    public void onPrePersist(){
+        System.out.println("onPre Forfeiture");
+
+        try {
+            System.out.println("Thread Sleep");
+            Thread.currentThread().sleep((long) (450 + Math.random() * 230));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     @PostPersist
     public void onPostPersist(){
         Inserted inserted = new Inserted();
